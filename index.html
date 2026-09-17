@@ -232,8 +232,10 @@ td .bar div{height:100%;background:var(--flow)}
 .chips-row span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:8px 16px;font-size:14.5px;font-weight:600;color:#fff}
 @media (max-width:760px){#consulting .card.dark{grid-template-columns:1fr!important}}
 
-.pricing{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
-@media (max-width:900px){.pricing{grid-template-columns:1fr}}
+.pricing{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start;grid-template-areas:"budget fee" "waste fee"}
+.calc-budget{grid-area:budget}
+.calc-waste{grid-area:waste}
+.fee-box{grid-area:fee}
 .calc .row{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
 .calc label{font-weight:700}
 .calc .hint{display:block;font-size:13.5px;color:var(--ink-2);font-weight:400}
@@ -244,6 +246,48 @@ td .bar div{height:100%;background:var(--flow)}
 .calc .out span{font-size:13.5px;color:var(--ink-2)}
 .calc .foot{margin-top:12px;font-size:13px;color:var(--ink-2)}
 
+.spend-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.chip-btn{font:inherit;font-size:14.5px;font-weight:700;padding:10px 16px;border-radius:999px;border:1.5px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s,color .15s;direction:ltr}
+.chip-btn:hover{border-color:var(--flow)}
+.chip-btn.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+.fee-box{border-radius:16px;padding:32px 30px;background:linear-gradient(135deg,var(--flow) 0%,#1b2f9e 100%);box-shadow:0 28px 56px -28px rgba(43,75,255,.55);color:#fff;height:100%}
+.fee-box-h{font-size:16px;font-weight:700;color:rgba(255,255,255,.9)}
+.fee-box-v{display:flex;align-items:baseline;gap:10px;margin-top:10px}
+.fee-box-v b{font-size:56px;font-weight:900;color:#fff;line-height:1;letter-spacing:-0.02em}
+.fee-box-v b.small{font-size:24px}
+.fee-box-v span{font-size:15px;color:rgba(255,255,255,.7)}
+.fee-box .btn{margin-top:20px;width:100%;text-align:center;background:#fff;color:var(--ink);font-size:16px;padding:14px 20px}
+.fee-box .btn:hover{background:var(--ink);color:#fff}
+.fee-badge{display:inline-flex;align-items:center;gap:6px;margin-top:16px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.32);border-radius:999px;padding:9px 16px;font-size:13.5px;font-weight:700;color:#fff}
+.fee-extras p{margin-top:14px;font-size:13px;color:rgba(255,255,255,.6)}
+.fee-list-h{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.2);font-size:14px;font-weight:700;color:#fff}
+.fee-list{margin-top:10px;display:grid;gap:8px}
+.fee-list div{font-size:14px;color:rgba(255,255,255,.75);padding-inline-start:18px;position:relative}
+.fee-list div::before{content:"";position:absolute;inset-inline-start:0;top:8px;width:6px;height:6px;border-radius:50%;background:#8CFFC0}
+@media (max-width:900px){
+  #pricing{padding:16px 0 24px}
+  #pricing .sec-head{margin-bottom:10px}
+  #pricing .sec-head h2{font-size:22px}
+  #pricing .sec-head p,.calc-budget h3,.calc-budget > p,.calc-waste .foot,.fee-extras{display:none}
+  .pricing{grid-template-columns:1fr;gap:8px;grid-template-areas:"budget" "fee" "waste"}
+  .calc-budget,.calc-waste{padding:14px 14px 12px}
+  .spend-chips{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+  .chip-btn{padding:9px 10px;font-size:13.5px;width:100%}
+  .chip-btn:last-child{grid-column:1/-1}
+  .fee-box{padding:16px 16px 14px;height:auto}
+  .fee-box-h{font-size:14px}
+  .fee-box-v{margin-top:4px}
+  .fee-box-v b{font-size:40px}
+  .fee-box-v b.small{font-size:18px}
+  .fee-box .btn{margin-top:12px;padding:12px 16px}
+  .fee-badge{margin-top:10px;padding:7px 12px;font-size:12.5px}
+  .calc .out{grid-template-columns:1fr 1fr;gap:8px;margin-top:0}
+  .calc .out div{padding:12px 12px}
+  .calc .out b{font-size:22px}
+  .calc .out span{font-size:12px;line-height:1.35}
+}
+
 .lead .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px;margin-top:18px}
 @media (max-width:760px){.lead .grid{grid-template-columns:1fr}}
 .lead label{display:block;font-size:14px;font-weight:700}
@@ -252,6 +296,8 @@ td .bar div{height:100%;background:var(--flow)}
 .lead .full{grid-column:1/-1}
 .lead .actions{grid-column:1/-1;display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:4px}
 .lead .actions span{font-size:13.5px;color:var(--ink-2)}
+.quick-contact{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+.quick-contact span{font-size:14.5px;font-weight:700;color:var(--ink-2)}
 .access{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
 @media (max-width:760px){.access{grid-template-columns:1fr}}
 .access div{background:var(--paper);border-radius:8px;padding:14px 16px;font-size:14.5px;color:var(--ink-2)}
@@ -293,7 +339,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     </ul>
     <div class="nav-right">
       <button class="lang" id="langBtn" type="button">العربية</button>
-      <a class="btn blue" href="#analyze" data-i="cta_analyze">حلّل حملتك مجاناً</a>
+      <a class="btn blue" href="#analyze" data-i="cta_analyze">تواصل معنا</a>
     </div>
   </div>
 </nav>
@@ -310,11 +356,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   </div>
   <div class="wrap">
     <div class="hero-copy">
-      <div class="kicker" data-i="kicker">VeloFlow: منصة أتمتة تدير ميزانية إعلاناتك على ميتا</div>
+      <div class="kicker" data-i="kicker">VeloFlow: منصة أتمتة تدير إعلاناتك الرقمية</div>
       <h1><span data-i="h1a">وقف تموّل منشور.</span><span class="b" data-i="h1b">جرّب طريقة مقاسة.</span></h1>
       <p class="lede" data-i="lede">كل منتج لكل جمهور أول أسبوع، وبعدين النظام بيقرر وين تروح ميزانيتك تلقائياً. بتعرف كل دينار شو جاب، والمخاطرة علينا مش عليك: ما وصلنا للنتيجة اللي اتفقنا عليها، ما بتدفع.</p>
       <div class="hero-actions">
-        <a class="btn blue" href="#analyze" data-i="cta_analyze2">حلّل حملتك مجاناً</a>
+        <a class="btn blue" href="#analyze" data-i="cta_analyze2">تواصل معنا</a>
         <a class="btn ghost" href="#platform" data-i="cta_platform">شوف المنصة</a>
       </div>
       <p class="trust" data-i="trust">منصة أتمتة مبنية من فريق تقني، بإشراف متخصصين بالتسويق الرقمي بخبرة أكثر من عشر سنين. مش وكالة، ومش تمويل منشور.</p>
@@ -333,6 +379,55 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     </div>
   </div>
 </header>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 data-i="pc_h">التسعير: نسبة من ميزانية إعلاناتك</h2>
+      <p data-i="pc_p">مش سعر ثابت ولا باقة. رسومنا نسبة من اللي بتصرفه على الإعلانات، فمصلحتنا وحدة: ميزانيتك تشتغل. شوف تقديراً لرسومك تحت، والرقم النهائي بتوصلك مكتوب بالعرض بعد التحليل المجاني.</p>
+    </div>
+    <div class="pricing">
+      <div class="card calc calc-budget">
+        <h3 data-i="cc_h">كم بتصرف على إعلاناتك الآن؟ وكم بيضيع منها؟</h3>
+        <p data-i="cc_p">إذا حالياً بتصرف على الإعلانات وهي مصدر مبيعاتك، اختار تقريباً وين بتقع ميزانيتك الشهرية.</p>
+        <div class="row" style="display:block">
+          <label data-i="cc_l">ميزانية الإعلانات الشهرية</label>
+          <div class="spend-chips" id="spendChips">
+            <button type="button" class="chip-btn on" data-waste="550" data-fee="99">$100 – $1K</button>
+            <button type="button" class="chip-btn" data-waste="1500" data-fee="149">$1K – $2K</button>
+            <button type="button" class="chip-btn" data-waste="2500" data-fee="199">$2K – $3K</button>
+            <button type="button" class="chip-btn" data-waste="4000" data-fee="249">$3K – $5K</button>
+            <button type="button" class="chip-btn" data-waste="7500" data-fee="0">$5K+</button>
+          </div>
+        </div>
+      </div>
+      <div class="fee-box">
+        <div class="fee-box-h" data-i="fee_h">رسومنا الشهرية على هاد الصرف</div>
+        <div class="fee-box-v"><b class="num" id="feeOut">$99</b><span data-i="fee_u" id="feeUnit">بالشهر</span></div>
+        <a class="btn" href="#analyze" data-i="fee_cta">تواصل معنا</a>
+        <div class="fee-badge" data-i="fee_badge">🎉 أول أسبوع اشتراك معنا مجاني بالكامل</div>
+        <div class="fee-extras">
+          <p data-i="fee_f">تقدير مبدئي حسب صرفك. الرقم النهائي بيتثبت بعد التحليل المجاني حسب عدد منتجاتك.</p>
+          <div class="fee-list-h" data-i="pc2_h">شو بتاخد مقابل الرسوم</div>
+          <div class="fee-list">
+            <div data-i="pc2a">بناء جماهير لكل منتج أو خدمة، وإعلانات لكل جمهور</div>
+            <div data-i="pc2b">مراجعة وإعادة توزيع للميزانية كل دورة</div>
+            <div data-i="pc2c">تقرير يومي واضح: كل منتج كم كلّف وكم جاب</div>
+            <div data-i="pc2d">ضمان مكتوب على نتيجة الشهر الأول</div>
+          </div>
+          <p style="margin-top:12px" data-i="pc2f">ميزانية الإعلانات نفسها مش من ضمن الرسوم، بتدفعها إنت مباشرة لميتا من حسابك.</p>
+        </div>
+      </div>
+      <div class="card calc calc-waste">
+        <div class="out">
+          <div><b class="num" id="wasteM">$165</b><span data-i="cc_m">بيروح كل شهر على مواضع وفئات ما بتجيب طلبات</span></div>
+          <div><b class="num" id="wasteY">$1,980</b><span data-i="cc_y">بالسنة</span></div>
+        </div>
+        <p class="foot" data-i="cc_f">تقدير على أساس إنه 30% من ميزانية التمويل العادي بتروح على أماكن وأعمار ما بتشتري. بالحالات اللي اشتغلنا عليها الرقم كان أعلى.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="platform">
   <div class="wrap">
@@ -510,48 +605,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   </div>
 </section>
 
-<section id="pricing">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2 data-i="pc_h">التسعير: نسبة من ميزانية إعلاناتك</h2>
-      <p data-i="pc_p">مش سعر ثابت ولا باقة. رسومنا نسبة من اللي بتصرفه على الإعلانات، فمصلحتنا وحدة: ميزانيتك تشتغل. النسبة بالضبط بتوصلك مكتوبة بالعرض بعد التحليل المجاني، حسب حجم ميزانيتك وعدد منتجاتك.</p>
-    </div>
-    <div class="pricing">
-      <div class="card calc">
-        <h3 data-i="cc_h">كم بتصرف على إعلاناتك الآن؟ وكم بيضيع منها؟</h3>
-        <p data-i="cc_p">إذا حالياً بتصرف على الإعلانات وهي مصدر مبيعاتك، حرّك المؤشر على اللي بتصرفه بالشهر تقريباً.</p>
-        <div class="row" style="display:block">
-          <label for="spend"><span data-i="cc_l">ميزانية الإعلانات الشهرية</span> <span class="hint"><span class="num" id="spendOut">1,500</span> <span data-i="cc_u">دولار</span></span></label>
-          <input type="range" id="spend" min="300" max="10000" step="100" value="1500">
-        </div>
-        <div class="out">
-          <div><b class="num" id="wasteM">$450</b><span data-i="cc_m">بيروح كل شهر على مواضع وفئات ما بتجيب طلبات</span></div>
-          <div><b class="num" id="wasteY">$5,400</b><span data-i="cc_y">بالسنة</span></div>
-        </div>
-        <p class="foot" data-i="cc_f">تقدير على أساس إنه 30% من ميزانية التمويل العادي بتروح على أماكن وأعمار ما بتشتري. بالحالات اللي اشتغلنا عليها الرقم كان أعلى. التحليل المجاني بيطلّعلك رقمك إنت.</p>
-      </div>
-      <div class="card dark">
-        <h3 data-i="pc2_h">شو بتاخد مقابل النسبة</h3>
-        <ul>
-          <li data-i="pc2a">بناء جماهير لكل منتج أو خدمة، وإعلانات لكل جمهور</li>
-          <li data-i="pc2b">مراجعة وإعادة توزيع للميزانية كل دورة</li>
-          <li data-i="pc2c">تقرير شهري واضح: كل منتج كم كلّف وكم جاب</li>
-          <li data-i="pc2d">ضمان مكتوب على نتيجة الشهر الأول</li>
-          <li data-i="pc2e">ميتا (فيسبوك وإنستغرام) هلأ، وقنوات تانية جاي</li>
-        </ul>
-        <p style="margin-top:14px" data-i="pc2f">ميزانية الإعلانات نفسها مش من ضمن الرسوم، بتدفعها إنت مباشرة لميتا من حسابك.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section id="consulting" style="padding:40px 0">
   <div class="wrap">
     <div class="card dark" style="display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:center;padding:30px 32px">
       <div>
         <h3 data-i="cn_h">مش بس ميتا</h3>
         <p data-i="cn_p">كمان بنقدم استشارات بكل مجالات التسويق الرقمي: جوجل، يوتيوب، لينكدإن، وغيرها. إذا حاب رأي أو خطة لقناة تانية غير ميتا، احكي معنا.</p>
-        <a class="btn" style="margin-top:16px" href="https://wa.me/962789838359?text=%D8%A8%D8%AF%D9%8A%20%D8%A7%D8%B3%D8%AA%D8%B4%D8%A7%D8%B1%D8%A9%20%D8%A8%D8%AA%D8%B3%D9%88%D9%8A%D9%82%20%D8%B1%D9%82%D9%85%D9%8A%20%D8%A8%D9%82%D9%86%D8%A7%D8%A9%20%D8%BA%D9%8A%D8%B1%20%D9%85%D9%8A%D8%AA%D8%A7" target="_blank" rel="noopener" data-i="cn_btn">احكي معنا</a>
+        <a class="btn" style="margin-top:16px" href="https://wa.me/962789838359?text=%D8%A8%D8%AF%D9%8A%20%D8%A7%D8%B3%D8%AA%D8%B4%D8%A7%D8%B1%D8%A9%20%D8%A8%D8%AA%D8%B3%D9%88%D9%8A%D9%82%20%D8%B1%D9%82%D9%85%D9%8A%20%D8%A8%D9%82%D9%86%D8%A7%D8%A9%20%D8%BA%D9%8A%D8%B1%20%D9%85%D9%8A%D8%AA%D8%A7" target="_blank" rel="noopener" data-i="cn_btn">تواصل معنا</a>
       </div>
       <div class="chips-row">
         <span>Google</span><span>YouTube</span><span>LinkedIn</span><span data-i="cn_more">وغيرها</span>
@@ -563,14 +623,20 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <section id="analyze">
   <div class="wrap">
     <div class="sec-head">
-      <h2 data-i="an_h">حلّل حملتك مجاناً</h2>
-      <p data-i="an_p">بنطلّع على حملاتك الحالية وبنرجّعلك صفحة وحدة: وين بتروح مصاريك، شو اللي بيجيب وشو اللي ما بيجيب، وشو ممكن يتغير. بدون التزام.</p>
+      <h2 data-i="an_h">جرّب الفرصة، ما عندك شي تخسره</h2>
+      <p data-i="an_p">أول أسبوع اشتراك معنا مجاني بالكامل. وإذا الشهر الأول كامل ما وصلنا فيه للنتيجة اللي اتفقنا عليها، رسومه كمان مجانية. عبّي معلوماتك تحت واحنا بنرتب باقي الأمور بكل أريحية، أو تواصل معنا مباشرة.</p>
+    </div>
+    <div class="quick-contact">
+      <span data-i="qc_l">تواصل معنا مباشرة:</span>
+      <a class="btn wa" href="https://wa.me/962789838359?text=%D8%A8%D8%AF%D9%8A%20%D8%A7%D8%B4%D8%AA%D8%B1%D9%83%20%D9%85%D8%B9%20VeloFlow" target="_blank" rel="noopener" data-i="qc_wa">واتساب</a>
+      <a class="btn ghost" href="tel:+962789838359" data-i="qc_call">اتصل فينا</a>
+      <a class="btn ghost" href="mailto:support@adveloflow.com" data-i="qc_mail">إيميل</a>
     </div>
     <div class="card lead">
       <div class="access">
-        <div><b data-i="ac1">دقيقة وحدة منك</b><span data-i="ac1s">صلاحية مشاهدة بس على حسابك الإعلاني. ما بنقدر نعدّل شي.</span></div>
-        <div><b data-i="ac2">ولا تصدير ولا تصوير</b><span data-i="ac2s">ما بدنا ملفات ولا سكرين شوت. بنشوف الأرقام بأنفسنا.</span></div>
-        <div><b data-i="ac3">النتيجة خلال يومين</b><span data-i="ac3s">تقرير تحليل من صفحة وحدة على واتساب أو الإيميل.</span></div>
+        <div><b data-i="ac1">أول أسبوع مجاني</b><span data-i="ac1s">بلّش بدون أي مخاطرة، أول أسبوع اشتراك مجاني بالكامل.</span></div>
+        <div><b data-i="ac2">ضمان الشهر الأول</b><span data-i="ac2s">إذا ما وصلنا للنتيجة المتفقة أول شهر، رسومه بتسقط.</span></div>
+        <div><b data-i="ac3">حسابك بإيدك</b><span data-i="ac3s">إحنا ما بنمسك مصاريك ولا حسابك، الوصول شراكة بس.</span></div>
       </div>
       <div class="grid">
         <div><label for="fBusiness" data-i="f_biz">اسم الشغل</label><input id="fBusiness" type="text"></div>
@@ -586,7 +652,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <div><label for="fPhone" data-i="f_phone">واتساب</label><input id="fPhone" type="tel" dir="ltr"></div>
         <div><label for="fEmail" data-i="f_email">الإيميل</label><input id="fEmail" type="email" dir="ltr"></div>
         <div class="full"><label for="fMsg" data-i="f_msg">شو أكثر شي بوجعك بالإعلانات هلأ؟</label><textarea id="fMsg"></textarea></div>
-        <div class="actions"><button class="btn blue" type="button" id="sendLead" data-i="f_btn">ابعت و رح نحللك حملتك مجاناً</button><span data-i="f_note">بيفتح الإيميل عندك وكل شي جاهز. بنرد خلال يوم شغل.</span></div>
+        <div class="actions"><button class="btn blue" type="button" id="sendLead" data-i="f_btn">ابعت، وبنرتب الباقي</button><span data-i="f_note">بيفتح الإيميل عندك وكل شي جاهز، وبنتواصل معك بأسرع وقت.</span></div>
       </div>
     </div>
   </div>
@@ -611,8 +677,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <script>
 const EN = {
 nav_why:"Why VeloFlow", nav_who:"Who it's for", nav_how:"How we work", nav_proof:"Results", nav_pricing:"Pricing",
-cta_analyze:"Analyze my campaign, free", cta_analyze2:"Analyze my campaign, free", cta_proof:"See the results", cta_wa:"WhatsApp", cta_wa2:"WhatsApp", cta_wa3:"WhatsApp",
-kicker:"VeloFlow: the automation platform running your Meta ad budget",
+cta_analyze:"Contact us", cta_analyze2:"Contact us", cta_proof:"See the results", cta_wa:"WhatsApp", cta_wa2:"WhatsApp", cta_wa3:"WhatsApp",
+kicker:"VeloFlow: the automation platform running your digital ads",
 h1a:"Stop boosting posts.", h1b:"Try a measured method.",
 lede:"Every product to every audience in week one, then the platform decides automatically where your budget goes. You know what every dollar brought, and the risk is on us, not you: if we miss the agreed result, you don't pay.",
 trust:"An automation platform built by a tech team, overseen by digital marketing specialists with more than ten years of experience. Not an agency, and not post boosting.",
@@ -665,17 +731,19 @@ pl3h:"The risk is on us", pl3p:"A written guarantee: miss the agreed result, and
 pl4h:"A real business result", pl4p:"Orders, bookings, sales. Not reach or likes.",
 g_h:"Missed the result? You don't pay. Sleep well.", g_p:"Before we start, we write down together the result that matters to you and a minimum ad budget. If month one misses it, our fee for that month is waived. Ad money goes to Meta from your own account; we never hold it.",
 g1:"The result (orders, bookings or sales) is written down before day one", g2:"A minimum budget is agreed so the method gets its chance", g3:"Your ad account stays in your name and in your hands", g4:"A full report with every number, every month",
-pc_h:"Pricing: a percentage of your ad budget", pc_p:"Not a flat fee and not a package. Our fee is a share of what you spend on ads, so we want the same thing you do: your budget working. The exact percentage comes in writing in your proposal after the free analysis, based on your budget size and number of products.",
-cc_h:"How much do you spend on ads now? And how much is wasted?", cc_p:"If you're currently spending on ads and that's your source of sales, move the slider to roughly what you spend per month.",
+pc_h:"Pricing: a percentage of your ad budget", pc_p:"Not a flat fee and not a package. Our fee is a share of what you spend on ads, so we want the same thing you do: your budget working. See an estimate of your fee below; the exact number comes in writing in your proposal after the free analysis.",
+cc_h:"How much do you spend on ads now? And how much is wasted?", cc_p:"If you're currently spending on ads and that's your source of sales, pick roughly where your monthly budget falls.",
 cc_l:"Monthly ad budget", cc_u:"USD", cc_m:"goes every month to placements and groups that bring no orders", cc_y:"per year",
-cc_f:"An estimate assuming 30% of an ordinary boosting budget lands on places and ages that don't buy. In the cases we worked on the figure was higher. The free analysis gives you your own number.",
-pc2_h:"What you get for the percentage", pc2a:"Audiences built for every product or service, and ads for every audience", pc2b:"Budget review and reallocation every cycle", pc2c:"A clear monthly report: what each product cost and brought", pc2d:"A written guarantee on month one's result", pc2e:"Meta (Facebook and Instagram) now, more channels coming",
+cc_f:"An estimate assuming 30% of an ordinary boosting budget lands on places and ages that don't buy. In the cases we worked on the figure was higher.",
+fee_h:"Our monthly fee on this spend", fee_u:"/ month", fee_cta:"Contact us", fee_badge:"🎉 Your first week with us is completely free", fee_f:"An initial estimate based on your spend. The final number is confirmed after the free analysis, based on your number of products.",
+pc2_h:"What you get for the fee", pc2a:"Audiences built for every product or service, and ads for every audience", pc2b:"Budget review and reallocation every cycle", pc2c:"A clear daily report: what each product cost and brought", pc2d:"A written guarantee on month one's result", pc2e:"Meta (Facebook and Instagram) now, more channels coming",
 pc2f:"The ad budget itself is not part of the fee; you pay it directly to Meta from your account.",
-cn_h:"Not just Meta", cn_p:"We also offer consulting across every digital marketing channel: Google, YouTube, LinkedIn and more. If you want an opinion or a plan for a channel other than Meta, talk to us.", cn_more:"and more", cn_btn:"Talk to us",
-an_h:"Analyze your campaign, free", an_p:"We look at your current campaigns and send back one page: where your money goes, what brings results and what doesn't, and what could change. No commitment.",
-ac1:"One minute of your time", ac1s:"View-only access to your ad account. We can't change anything.", ac2:"No exports, no screenshots", ac2s:"We don't need files or screenshots. We read the numbers ourselves.", ac3:"Results within two days", ac3s:"A one-page analysis report on WhatsApp or email.",
+cn_h:"Not just Meta", cn_p:"We also offer consulting across every digital marketing channel: Google, YouTube, LinkedIn and more. If you want an opinion or a plan for a channel other than Meta, talk to us.", cn_more:"and more", cn_btn:"Contact us",
+an_h:"Take the chance, you have nothing to lose", an_p:"Your first week with us is completely free. And if we don't hit the agreed result for the whole first month, that month's fee is free too. Fill in your info below and we'll arrange the rest, or reach us directly.",
+qc_l:"Reach us directly:", qc_wa:"WhatsApp", qc_call:"Call us", qc_mail:"Email",
+ac1:"First week free", ac1s:"Start with zero risk, a full free first week.", ac2:"Month-one guarantee", ac2s:"Miss the agreed result in month one and that fee is waived.", ac3:"Your account stays yours", ac3s:"We never hold your money or your account. Access is a partnership.",
 f_biz:"Business name", f_name:"Your name", f_sell:"How do you sell?", f_sell0:"Choose", f_sell1:"WhatsApp or DM orders with delivery", f_sell2:"Bookings (clinic, salon, service)", f_sell3:"I only boost posts", f_sell4:"Something else",
-f_spend:"Roughly how much do you spend on ads per month?", f_phone:"WhatsApp", f_email:"Email", f_msg:"What hurts most about your ads right now?", f_btn:"Send, and we'll analyze your campaign for free", f_note:"Opens your email app with everything filled in. We reply within one working day.",
+f_spend:"Roughly how much do you spend on ads per month?", f_phone:"WhatsApp", f_email:"Email", f_msg:"What hurts most about your ads right now?", f_btn:"Send, and we'll take it from there", f_note:"Opens your email app with everything filled in. We'll be in touch as soon as possible.",
 ct_h:"A question before you start?", ct_p:"Write to us and we reply the same day.", ct_btn:"Email us",
 ft:"An operating system for your ad budget"
 };
@@ -692,7 +760,7 @@ function applyLang(){
   document.querySelectorAll('[data-i]').forEach(el => { el.innerHTML = t(el.dataset.i); });
   document.getElementById('langBtn').textContent = lang==='en' ? 'العربية' : 'English';
   document.title = lang==='en' ? 'VeloFlow: Stop boosting posts, try a measured method' : 'VeloFlow: وقف تموّل منشور، جرّب طريقة مقاسة';
-  calc();
+  updateFee(document.querySelector('#spendChips .chip-btn.on'));
 }
 
 // hero bars — wait for the panel entrance, then fill
@@ -702,15 +770,26 @@ const fillHeroBars = () => {
 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) fillHeroBars();
 else setTimeout(fillHeroBars, 720);
 
-// waste calculator
+// pricing chips: waste estimate + fee
 const WASTE = 0.30;
-function calc(){
-  const v = +document.getElementById('spend').value;
-  document.getElementById('spendOut').textContent = v.toLocaleString('en');
-  document.getElementById('wasteM').textContent = '$' + Math.round(v*WASTE).toLocaleString('en');
-  document.getElementById('wasteY').textContent = '$' + Math.round(v*WASTE*12).toLocaleString('en');
+function updateFee(btn){
+  const chips = document.querySelectorAll('#spendChips .chip-btn');
+  chips.forEach(c => c.classList.toggle('on', c===btn));
+  const waste = +btn.dataset.waste, fee = +btn.dataset.fee;
+  document.getElementById('wasteM').textContent = '$' + Math.round(waste*WASTE).toLocaleString('en');
+  document.getElementById('wasteY').textContent = '$' + Math.round(waste*WASTE*12).toLocaleString('en');
+  const feeOut = document.getElementById('feeOut'), feeUnit = document.getElementById('feeUnit');
+  if(fee > 0){
+    feeOut.textContent = '$' + fee.toLocaleString('en');
+    feeOut.classList.remove('small');
+    feeUnit.textContent = t('fee_u');
+  } else {
+    feeOut.textContent = lang==='en' ? 'Special price, contact us' : 'سعر خاص، تواصل معنا';
+    feeOut.classList.add('small');
+    feeUnit.textContent = '';
+  }
 }
-document.getElementById('spend').addEventListener('input', calc);
+document.querySelectorAll('#spendChips .chip-btn').forEach(c => c.addEventListener('click', () => updateFee(c)));
 
 // lead form
 document.getElementById('sendLead').onclick = () => {
